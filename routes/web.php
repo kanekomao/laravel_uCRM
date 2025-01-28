@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InertiaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,15 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/inerita-test', function () {
+    return Inertia::render('InertiaTest');
+});
+
+Route::get('/inertia/index', [InertiaController::class, 'index'])->name('inerita.index');
+Route::post('/inertia', [InertiaController::class, 'store'])->name('inertia.store');
+Route::get('/inertia/show/{id}', [InertiaController::class, 'show'])->name('inerita.show');
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
